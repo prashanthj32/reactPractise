@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import Couter from './components/Couter';
+import NameHandler from './components/NameHandler';
+import PersonalDetails from './components/PersonalDetails';
+import ProductList from './components/ProductList';
+import ProductCard from './components/ProductCard';
+import CounterNew from './components/CounterNew';
+import UserTable from './components/Tables/UserTable';
 
 function App() {
+
+  let name = "manasa"
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {name}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Couter />
+      <NameHandler/> */}
+      {/* <PersonalDetails /> */}
+      {/* <ProductList/> */}
+      {/* <ProductCard  product={{name : 'asdf', rate:2000}}/> */}
+      {/* <CounterNew /> */}
+      <UserTable />
     </div>
   );
 }
