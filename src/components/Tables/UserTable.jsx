@@ -34,7 +34,7 @@ function UserTable() {
             }
 
 
-            {!showAddAndUpdateUser && <div>
+            {showAddAndUpdateUser === false && <div>
                 <div>UserTable</div>
                 <div >
                     <button onClick={() => {
@@ -72,6 +72,7 @@ function UserTable() {
                                                     setShowAddAndUpdateUser(true);
                                                     setSelectedUserIndex(index);
                                                 }}>Update</button>
+                                                
                                                 <button onClick={() => {
                                                     if (window.confirm("Are sure to delete user") === true) {
                                                         let tempArray = usersList;
