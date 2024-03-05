@@ -28,8 +28,8 @@ function App() {
       {/* <ProductCard  product={{name : 'asdf', rate:2000}}/> */}
       {/* <CounterNew /> */}
       {/* <UserTable /> */}
-      {/* <BasicForm /> */}
-      <AddressBook />
+      <BasicForm />
+      {/* <AddressBook /> */}
       </div>
   );
 }
