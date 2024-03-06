@@ -15,18 +15,20 @@ function BasicForm() {
             },
            
             dob: ''
-        }
+        },
     });
-    const { register, handleSubmit, control, formState, watch, getValues, setValue } = form;
-    const { errors, dirtyFields, touchedFields } = formState
+    const { register, handleSubmit, control, formState, watch, getValues, setValue, reset, trigger } = form;
+    const { errors, dirtyFields, touchedFields, isSubmitSuccessful, isSubmitted, isSubmitting, submitCount } = formState
     // const {name, ref, onChange} = register('username');
 
-    console.log(dirtyFields,'Dirty');
-    console.log(touchedFields,'touched');
+    // console.log(dirtyFields,'Dirty');
+    // console.log(touchedFields,'touched');
 
     const formSubmit = (data) => {
         console.log(data, "Form submited")
     }
+
+    console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount});
 
     function getFormData(){
         console.log('get form data', getValues())
@@ -37,12 +39,12 @@ function BasicForm() {
     }
 
     
-    // const watchAge = watch()
+    const watchAge = watch()
 
     return (
         <>
             <div>BasicForm</div>
-            {/* <p>{JSON.stringify(watchAge)}</p> */}
+            <p>{JSON.stringify(watchAge)}</p>
             <div>
                 <form onSubmit={handleSubmit(formSubmit)} noValidate>
                     <input {
@@ -151,9 +153,11 @@ function BasicForm() {
                     } id="dob" type='date' placeholder='dob' /><br />
 
 
-                    <button type='submit'>Submit</button>
+                    <button  disabled={isSubmitting} type='submit'>Submit</button>
                     <button type='button' onClick={()=>getFormData()}>Get Data</button>
                     <button type='button' onClick={()=>setFormData()}>Set Data</button>
+                    <button disabled={!isSubmitSuccessful} type='button' onClick={()=>reset()}>Reset</button>
+                    <button type='button' onClick={()=>trigger()}>Validation Trigger</button>
 
                 </form>
             </div>
