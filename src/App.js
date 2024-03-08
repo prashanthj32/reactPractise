@@ -9,14 +9,17 @@ import CounterNew from './components/CounterNew';
 import UserTable from './components/Tables/UserTable';
 import BasicForm from './Forms/BasicForm';
 import AddressBook from './Forms/AddressBook';
+import Timer from './timer/Timer';
+import { useState } from 'react';
 
 function App() {
 
   let name = "manasa"
 
+  const [showTimer, setShowTimer] = useState(true);
   return (
     <div className="App">
-        {/* <img src={logo} className="App-logo" alt="logo" />
+      {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           {name}
         </p>
@@ -28,9 +31,13 @@ function App() {
       {/* <ProductCard  product={{name : 'asdf', rate:2000}}/> */}
       {/* <CounterNew /> */}
       {/* <UserTable /> */}
-      <BasicForm />
+      {/* <BasicForm /> */}
       {/* <AddressBook /> */}
-      </div>
+      {showTimer && <Timer />}
+      <button onClick={() => {
+        setShowTimer(!showTimer);
+      }}>ShowTimer</button>
+    </div>
   );
 }
 

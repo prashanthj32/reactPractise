@@ -1,5 +1,5 @@
 import { DevTool } from '@hookform/devtools';
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 function BasicForm() {
@@ -13,7 +13,6 @@ function BasicForm() {
                 buildname: 'sreman Vlite',
                 city: 'Hyderabad'
             },
-           
             dob: ''
         },
     });
@@ -28,7 +27,7 @@ function BasicForm() {
         console.log(data, "Form submited")
     }
 
-    console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount});
+    // console.log({isSubmitting, isSubmitted, isSubmitSuccessful, submitCount});
 
     function getFormData(){
         console.log('get form data', getValues())
@@ -41,8 +40,17 @@ function BasicForm() {
     
     const watchAge = watch()
 
+    const [count, setCount]= useState(0);
+
+    function check(){
+        if(count%2 === 0){
+            console.log('it is an even number')
+        }
+    }
+
     return (
         <>
+            <button onClick={()=>setCount(count+1)}>Count{count}</button>
             <div>BasicForm</div>
             <p>{JSON.stringify(watchAge)}</p>
             <div>
