@@ -11,6 +11,7 @@ import BasicForm from './Forms/BasicForm';
 import AddressBook from './Forms/AddressBook';
 import Timer from './timer/Timer';
 import { useState } from 'react';
+import Posts from './components/posts/Posts';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
       <button onClick={() => {
         setShowTimer(!showTimer);
       }}>ShowTimer</button>
+      <Posts/>
     </div>
   );
 }
