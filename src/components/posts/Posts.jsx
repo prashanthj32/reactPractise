@@ -5,9 +5,9 @@ function Posts() {
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/posts/100').then((result)=>{
+        axios.get('https://jsonplaceholder.typicode.com/posts').then((result)=>{
             console.log(result);
-            setPosts([result.data]);
+            setPosts(result.data);
         }).catch((error)=>{
             console.log(error);
         })

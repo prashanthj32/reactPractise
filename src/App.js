@@ -1,44 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
-import Couter from './components/Couter';
-import NameHandler from './components/NameHandler';
-import PersonalDetails from './components/PersonalDetails';
-import ProductList from './components/ProductList';
-import ProductCard from './components/ProductCard';
-import CounterNew from './components/CounterNew';
-import UserTable from './components/Tables/UserTable';
-import BasicForm from './Forms/BasicForm';
-import AddressBook from './Forms/AddressBook';
-import Timer from './timer/Timer';
-import { useState } from 'react';
 import Posts from './components/posts/Posts';
+import CompA from './components/context/CompA';
+import { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
+
+export const UserContext = createContext('User Name');
+export const AddressContext = createContext()
+
 
 function App() {
 
-  let name = "manasa"
+  const [userName, setUsername] = useState('User Name');
 
-  const [showTimer, setShowTimer] = useState(true);
+  useEffect(() => {
+    setTimeout(()=>{
+      axios.get('https://jsonplaceholder.typicode.com/users/1').then((result) => {
+        console.log(result.data.name);
+        setUsername(result.data.name);
+      }).catch((error) => {
+        console.log(error);
+      })
+    },5000)
+   
+  }, [])
+
   return (
     <div className="App">
-      {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {name}
-        </p>
+      {/* <Posts/>
+       */}
 
-      <Couter />
-      <NameHandler/> */}
-      {/* <PersonalDetails /> */}
-      {/* <ProductList/> */}
-      {/* <ProductCard  product={{name : 'asdf', rate:2000}}/> */}
-      {/* <CounterNew /> */}
-      {/* <UserTable /> */}
-      {/* <BasicForm /> */}
-      {/* <AddressBook /> */}
-      {showTimer && <Timer />}
-      <button onClick={() => {
-        setShowTimer(!showTimer);
-      }}>ShowTimer</button>
-      <Posts/>
+      <UserContext.Provider value={userName}>
+        <AddressContext.Provider value={'201, gayathrinager, hyderabad'}>
+          <CompA userName={'Prashanth'} />
+        </AddressContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }

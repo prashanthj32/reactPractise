@@ -10,6 +10,7 @@ function Timer() {
 
     useEffect(() => {
         let intervel = setInterval(() => {
+            console.log("hello");
             setTimer(timer + 1);
         }, 1000);
         return () => {
