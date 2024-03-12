@@ -4,6 +4,7 @@ import Posts from './components/posts/Posts';
 import CompA from './components/context/CompA';
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import Counter from './components/reducer/Counter';
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext()
@@ -30,11 +31,13 @@ function App() {
       {/* <Posts/>
        */}
 
-      <UserContext.Provider value={userName}>
+      {/* <UserContext.Provider value={userName}>
         <AddressContext.Provider value={'201, gayathrinager, hyderabad'}>
           <CompA userName={'Prashanth'} />
         </AddressContext.Provider>
-      </UserContext.Provider>
+      </UserContext.Provider> */}
+
+      <Counter />
     </div>
   );
 }
