@@ -6,6 +6,8 @@ import { createContext, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import Counter from './components/reducer/Counter';
 import Counter2 from './components/reducer/Counter2';
+import Apicallwithreducer from './components/reducer/Apicallwithreducer';
+import SalaryComponent from './components/callBackHook/SalaryComponent';
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext();
@@ -29,24 +31,24 @@ function App() {
   const [count, dispatch] = useReducer(reducer, intialValue)
   const [userName, setUsername] = useState('User Name');
 
-  useEffect(() => {
-    setTimeout(() => {
-      axios.get('https://jsonplaceholder.typicode.com/users/1').then((result) => {
-        console.log(result.data.name);
-        setUsername(result.data.name);
-      }).catch((error) => {
-        console.log(error);
-      })
-    }, 5000)
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     axios.get('https://jsonplaceholder.typicode.com/users/1').then((result) => {
+  //       console.log(result.data.name);
+  //       setUsername(result.data.name);
+  //     }).catch((error) => {
+  //       console.log(error);
+  //     })
+  //   }, 5000)
 
-  }, [])
+  // }, [])
 
   return (
     <div className="App">
       {/* <Posts/>
        */}
 
-      <CounterContext.Provider value={{counterCount : count, counterDispatch : dispatch }}>
+      {/* <CounterContext.Provider value={{counterCount : count, counterDispatch : dispatch }}>
         <UserContext.Provider value={userName}>
           <AddressContext.Provider value={'201, gayathrinager, hyderabad'}>
             counter {count}
@@ -55,8 +57,11 @@ function App() {
         </UserContext.Provider>
       </CounterContext.Provider>
 
-      {/* <Counter /> */}
-      <Counter2 />
+      <Counter />
+      <Counter2 /> */}
+
+      {/* <Apicallwithreducer /> */}
+      <SalaryComponent />
     </div>
   );
 }
