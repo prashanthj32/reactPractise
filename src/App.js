@@ -8,6 +8,9 @@ import Counter from './components/reducer/Counter';
 import Counter2 from './components/reducer/Counter2';
 import Apicallwithreducer from './components/reducer/Apicallwithreducer';
 import SalaryComponent from './components/callBackHook/SalaryComponent';
+import UseMemoExample from './components/memo/UseMemoExample';
+import InputEx1 from './components/useRef/InputEx1';
+import TimerEx2 from './components/useRef/TimerEx2';
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext();
@@ -61,7 +64,10 @@ function App() {
       <Counter2 /> */}
 
       {/* <Apicallwithreducer /> */}
-      <SalaryComponent />
+      {/* <SalaryComponent /> */}
+      {/* <UseMemoExample /> */}
+      <InputEx1 />
+      <TimerEx2 />
     </div>
   );
 }
