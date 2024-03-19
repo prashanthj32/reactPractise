@@ -11,6 +11,8 @@ import SalaryComponent from './components/callBackHook/SalaryComponent';
 import UseMemoExample from './components/memo/UseMemoExample';
 import InputEx1 from './components/useRef/InputEx1';
 import TimerEx2 from './components/useRef/TimerEx2';
+import { Route, Routes } from 'react-router-dom';
+import SideNav from './components/SideNav';
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext();
@@ -66,8 +68,13 @@ function App() {
       {/* <Apicallwithreducer /> */}
       {/* <SalaryComponent /> */}
       {/* <UseMemoExample /> */}
-      <InputEx1 />
-      <TimerEx2 />
+      {/* <InputEx1 /> */}
+      {/* <TimerEx2 /> */}
+      <SideNav />
+      <Routes>
+        <Route path='/' element={<UseMemoExample />} />
+        <Route path='/timer' element={<TimerEx2 />} />
+      </Routes>
     </div>
   );
 }
