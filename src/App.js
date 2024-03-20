@@ -13,6 +13,14 @@ import InputEx1 from './components/useRef/InputEx1';
 import TimerEx2 from './components/useRef/TimerEx2';
 import { Route, Routes } from 'react-router-dom';
 import SideNav from './components/SideNav';
+import Home from './components/forRouting/Home';
+import Products from './components/forRouting/Products';
+import NoPage from './components/forRouting/NoPage';
+import Books from './components/forRouting/Books';
+import Cars from './components/forRouting/Cars';
+import Users from './components/forRouting/users/Users';
+import UserDetailsPage from './components/forRouting/users/UserDetailsPage';
+import Admin from './components/forRouting/users/Admin';
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext();
@@ -72,8 +80,16 @@ function App() {
       {/* <TimerEx2 /> */}
       <SideNav />
       <Routes>
-        <Route path='/' element={<UseMemoExample />} />
-        <Route path='/timer' element={<TimerEx2 />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} >
+        <Route index element={<Books/>}/>
+          <Route path='book' element={<Books/>}/>
+          <Route path='car' element={<Cars/>}/>
+        </Route>
+        <Route path='users' element={<Users />} />
+        <Route path='users/:userId' element={<UserDetailsPage />} />
+        <Route path='users/admin' element={<Admin />} />
+        <Route path='*' element={<NoPage />} />
       </Routes>
     </div>
   );
