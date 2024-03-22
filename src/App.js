@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Posts from './components/posts/Posts';
 import CompA from './components/context/CompA';
-import { createContext, useEffect, useReducer, useState } from 'react';
+import React, { createContext, useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import Counter from './components/reducer/Counter';
 import Counter2 from './components/reducer/Counter2';
@@ -21,6 +21,10 @@ import Cars from './components/forRouting/Cars';
 import Users from './components/forRouting/users/Users';
 import UserDetailsPage from './components/forRouting/users/UserDetailsPage';
 import Admin from './components/forRouting/users/Admin';
+import LowLevel from './components/forRouting/LowLevel';
+import HighLevel from './components/forRouting/HighLevel';
+// import About from './components/forRouting/About';
+const LazyAbout = React.lazy(() => import('./components/forRouting/About'))
 
 export const UserContext = createContext('User Name');
 export const AddressContext = createContext();
@@ -82,13 +86,17 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} >
-        <Route index element={<Books/>}/>
-          <Route path='book' element={<Books/>}/>
-          <Route path='car' element={<Cars/>}/>
+          <Route index element={<Books />} />
+          <Route path='book' element={<Books />} />
+          <Route path='car' element={<Cars />} >
+            <Route path='low' element={<LowLevel />} />
+            <Route path='high' element={<HighLevel />} />
+          </Route>
         </Route>
         <Route path='users' element={<Users />} />
         <Route path='users/:userId' element={<UserDetailsPage />} />
         <Route path='users/admin' element={<Admin />} />
+        <Route path='about' element={<React.Suspense fallback='loading ...'> <LazyAbout /></React.Suspense>} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </div>

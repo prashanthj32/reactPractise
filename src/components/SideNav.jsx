@@ -13,6 +13,7 @@ function SideNav() {
             <NavLink to='/' style={{margin:'10px'}}>Home</NavLink>
             <NavLink to='products' style={{margin:'10px'}}>Products</NavLink>
             <NavLink to='users' style={{margin:'10px'}}>Users</NavLink>
+            <NavLink to='about' style={{margin:'10px'}}>About</NavLink>
 
 
         </div>
