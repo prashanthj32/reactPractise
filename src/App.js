@@ -23,6 +23,9 @@ import UserDetailsPage from './components/forRouting/users/UserDetailsPage';
 import Admin from './components/forRouting/users/Admin';
 import LowLevel from './components/forRouting/LowLevel';
 import HighLevel from './components/forRouting/HighLevel';
+import Login from './components/auth/Login';
+import { AuthProvider } from './shared/AuthToken';
+import ValidateNavigation from './components/ValidateNavigation';
 // import About from './components/forRouting/About';
 const LazyAbout = React.lazy(() => import('./components/forRouting/About'))
 
@@ -62,9 +65,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Posts/>
-       */}
-
       {/* <CounterContext.Provider value={{counterCount : count, counterDispatch : dispatch }}>
         <UserContext.Provider value={userName}>
           <AddressContext.Provider value={'201, gayathrinager, hyderabad'}>
@@ -72,33 +72,27 @@ function App() {
             <CompA userName={'Prashanth'} />
           </AddressContext.Provider>
         </UserContext.Provider>
-      </CounterContext.Provider>
-
-      <Counter />
-      <Counter2 /> */}
-
-      {/* <Apicallwithreducer /> */}
-      {/* <SalaryComponent /> */}
-      {/* <UseMemoExample /> */}
-      {/* <InputEx1 /> */}
-      {/* <TimerEx2 /> */}
-      <SideNav />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<Products />} >
-          <Route index element={<Books />} />
-          <Route path='book' element={<Books />} />
-          <Route path='car' element={<Cars />} >
-            <Route path='low' element={<LowLevel />} />
-            <Route path='high' element={<HighLevel />} />
+      </CounterContext.Provider>*/}
+      <AuthProvider>
+        <SideNav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} >
+            <Route index element={<Books />} />
+            <Route path='book' element={<Books />} />
+            <Route path='car' element={<Cars />} >
+              <Route path='low' element={<LowLevel />} />
+              <Route path='high' element={<HighLevel />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path='users' element={<Users />} />
-        <Route path='users/:userId' element={<UserDetailsPage />} />
-        <Route path='users/admin' element={<Admin />} />
-        <Route path='about' element={<React.Suspense fallback='loading ...'> <LazyAbout /></React.Suspense>} />
-        <Route path='*' element={<NoPage />} />
-      </Routes>
+          <Route path='users' element={<ValidateNavigation><Users /></ValidateNavigation>} />
+          <Route path='users/:userId' element={<UserDetailsPage />} />
+          <Route path='users/admin' element={<Admin />} />
+          <Route path='about' element={<React.Suspense fallback='loading ...'> <LazyAbout /></React.Suspense>} />
+          <Route path='login' element={<Login />} />
+          <Route path='*' element={<NoPage />} />
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }
