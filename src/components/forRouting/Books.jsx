@@ -2,7 +2,9 @@ import React from 'react'
 
 function Books() {
     return (
-        <div>Books</div>
+        <div>
+            <h4>Books</h4>
+        </div>
     )
 }
 
