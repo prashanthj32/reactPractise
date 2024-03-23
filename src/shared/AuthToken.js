@@ -25,7 +25,6 @@ export const AuthProvider = (props) => {
 
     const Logout = () => {
         setUser(null);
-        ClearStorage()
         
     }
 
